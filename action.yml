@@ -1,0 +1,85 @@
+name: "Gitflow Action"
+description: "A GitHub Action to automate Gitflow"
+inputs:
+  bot_name:
+    description: "The name of the bot that will commit"
+    required: true
+  bot_email:
+    description: "The email of the bot that will commit"
+    required: true
+  trigger_cmd:
+    description: "The command that will trigger the action"
+    required: true
+    default: "@gitflow"
+  allowed_authors:
+    description: "Comma separated list of allowed authors"
+    required: false
+    default: ""
+  develop_branch:
+    description: "Develop branch"
+    required: false
+    default: "develop"
+  production_branch:
+    description: "Production branch"
+    required: false
+    default: "main"
+  release_branch_prefix:
+    description: "Release branch prefix"
+    required: false
+    default: "release/"
+  hotfix_branch_prefix:
+    description: "Hotfix branch prefix"
+    required: false
+    default: "hotfix/"
+  bugfix_branch_prefix:
+    description: "Bugfix branch prefix"
+    required: false
+    default: "bugfix/"
+  feature_branch_prefix:
+    description: "Feature branch prefix"
+    required: false
+    default: "feature/"
+  version_tag_prefix:
+    description: "Version tag prefix"
+    required: false
+    default: "v"
+  comment_author:
+    description: "The author of the comment"
+    required: false
+    default: ""
+  comment_body:
+    description: "The body of the comment"
+    required: false
+    default: ""
+  comment_id:
+    description: "The id of the comment"
+    required: false
+    default: ""
+  branch_name:
+    description: "The name of the branch"
+    required: false
+    default: ""
+  issue_number:
+    description: "The number of the issue"
+    required: false
+    default: ""
+  mergeable:
+    description: "The mergeable state of the pull request"
+    required: false
+    default: ""
+  is_draft:
+    description: "The draft state of the pull request"
+    required: false
+    default: ""
+  merge_state_status:
+    description: "The merge state status of the pull request"
+    required: false
+    default: ""
+outputs:
+  time: # id of output
+    description: "The time we greeted you"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.my_input }}
